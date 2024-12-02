@@ -64,3 +64,8 @@ body {
 .table-auto-bg {
     background-color: inherit !important; 
   }
+
+  .scrollable-list {
+    max-height: 200px; /* Maksimum yüksekliği ayarla */
+    overflow-y: auto; /* Dikey kaydırma etkinleştir */
+  }
