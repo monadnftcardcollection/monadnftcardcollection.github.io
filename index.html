@@ -125,7 +125,7 @@
                             touch-action="pan-y" 
                             auto-rotate 
                             tone-mapping="aces" 
-                            src="./models/monaddog.glb" 
+                            src="./models/monadcommunitycard.glb" 
                             shadow-intensity="1" 
                             alt="A 3D model of a shishkebab" 
                             style="height: 100vh; max-height: 100vh;">
@@ -136,12 +136,47 @@
     </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 <script src="https://d3js.org/d3.v6.min.js"></script>
 <script src="./src/billboard.min.js"></script>
 </html>
 
 <script>
+
+const modelViewer = document.getElementById("reveal");
+
+modelViewer.addEventListener("load", () => {
+  const materials = modelViewer.model.materials;
+  materials.forEach((material) => {
+    console.log("Material Name:", material.name);
+  });
+});
+
+
+
+modelViewer.addEventListener('load', async () => {
+  const model = modelViewer.model;
+  const materials = model.materials;
+
+  // Tüm materyal isimlerini konsola yazdır
+  materials.forEach(mat => console.log("Material Name:", mat.name));
+
+  const material = model.materials.find(mat => mat.name === 'image'); // Materyal adını kontrol edin
+
+  if (material) {
+    // Yeni bir doku oluştur ve uygula
+    const textureURI = './imgs/profile-photo.png'; // Doku yolu
+    const newTexture = await modelViewer.createTexture(textureURI); // Yeni bir doku oluştur
+    material.pbrMetallicRoughness.baseColorTexture.setTexture(newTexture); // Yeni dokuyu uygula
+
+    console.log("Material updated with new texture:", material.pbrMetallicRoughness.baseColorTexture);
+  } else {
+    console.error("Materyal bulunamadı: image");
+  }
+});
+
+
+
     var chart = bb.generate({
     data: {
         columns: [
@@ -155,4 +190,6 @@
       //guildId 1036357772826120242
 
       //userId 791227446849568779
+
+      //monad community project template
   </script>
