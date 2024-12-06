@@ -1,0 +1,18 @@
+{
+    "cards": [
+        {
+            "name": "Card #1",
+            "byuser": "caginonthesky",
+            "glb": "asdfa",
+            "img": "adsf",
+            "jsonfile": "asdf"
+        },
+        {
+            "name": "Card #2",
+            "byuser": "gizdusum",
+            "glb": "asdfa",
+            "img": "adsf",
+            "jsonfile": "asdf"
+        }
+    ]
+}
